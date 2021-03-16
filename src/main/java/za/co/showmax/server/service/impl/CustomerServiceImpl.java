@@ -1,5 +1,8 @@
 package za.co.showmax.server.service.impl;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +20,16 @@ public class CustomerServiceImpl implements CustomerService {
 	public String saveCustomer(Customer customer) {
 		customerRepository.save(customer);
 		return String.format("Added book with #ID: %d", customer.getId());
+	}
+
+	@Override
+	public List<Customer> getAll() {
+		return customerRepository.findAll();
+	}
+
+	@Override
+	public Optional<Customer> findByName(String name) {
+		return customerRepository.findByName(name);
 	}
 
 }
